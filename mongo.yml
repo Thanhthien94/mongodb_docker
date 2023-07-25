@@ -1,0 +1,17 @@
+mongodb:
+    image: mongodb/mongodb-community-server:6.0-ubi8
+    container_name: mongodb
+    command: [--auth]
+    ports:
+      - 27027:27017
+    volumes:
+      - ~/mongodb/data:/data/db
+      - ~/mongodb/log:/data/log
+      - ~/mongodb/backup:/data/backup
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=Rootpassword
+      - MONGO_INITDB_DATABASE=otherdb
+      #- MONGO_NON_ROOT_USERNAME=otheruser
+      #- MONGO_NON_ROOT_PASSWORD=otherpass
+    restart: always
